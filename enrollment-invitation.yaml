@@ -1,0 +1,169 @@
+context: {}
+entries:
+- attrs:
+    compatibility_mode: true
+    denied_action: message_continue
+    designation: enrollment
+    layout: stacked
+    name: Enrollment Invitation
+    policy_engine_mode: any
+    title: Enrollment Invitation
+  id: null
+  identifiers:
+    pk: 80c5d412-ce6e-4f89-a667-418e4476ba50
+    slug: enrollment-invitation
+  model: authentik_flows.flow
+- attrs:
+    field_key: password
+    label: Password
+    order: 300
+    placeholder: Password
+    required: true
+    type: password
+  id: null
+  identifiers:
+    pk: 6f9c5765-640c-4813-9cd3-06de3d4e4373
+  model: authentik_stages_prompt.prompt
+- attrs:
+    field_key: password_repeat
+    label: Password (repeat)
+    order: 301
+    placeholder: Password (repeat)
+    required: true
+    type: password
+  id: null
+  identifiers:
+    pk: be1f0246-0fe3-44ac-8d04-1d109b61dc45
+  model: authentik_stages_prompt.prompt
+- attrs:
+    field_key: username
+    label: Username
+    order: 100
+    placeholder: Username
+    required: true
+    type: text
+  id: null
+  identifiers:
+    pk: bf721257-309e-4659-a408-21a6b0e4f785
+  model: authentik_stages_prompt.prompt
+- attrs:
+    field_key: email
+    label: Email
+    order: 101
+    placeholder: Admin email
+    required: true
+    type: email
+  id: null
+  identifiers:
+    pk: c393ecb7-c3fb-4fa3-ab22-de3bc28b17a5
+  model: authentik_stages_prompt.prompt
+- attrs:
+    field_key: name
+    label: Name
+    order: 201
+    placeholder: "try:\n    return user.name\nexcept:\n    return ''"
+    placeholder_expression: true
+    required: true
+    type: text
+  id: null
+  identifiers:
+    pk: f03a120f-0147-4d42-a34c-adb665b2cab8
+  model: authentik_stages_prompt.prompt
+- attrs:
+    amount_digits: 1
+    amount_lowercase: 1
+    amount_symbols: 1
+    amount_uppercase: 1
+    error_message: Please ender a minimum of 12 characters with at least 1 uppercase,
+      1 lowercase, 1 digit, and 1 symbol.
+    length_min: 12
+    name: password-complexity
+    password_field: password
+    symbol_charset: '!\"#$%&''()*+,-./:;<=>?@[]^_`{|}~'
+  id: null
+  identifiers:
+    pk: 7fa94192-444d-4592-99b5-b4b337646bdd
+  model: authentik_policies_password.passwordpolicy
+- attrs:
+    fields:
+    - 6f9c5765-640c-4813-9cd3-06de3d4e4373
+    - be1f0246-0fe3-44ac-8d04-1d109b61dc45
+    - bf721257-309e-4659-a408-21a6b0e4f785
+    - c393ecb7-c3fb-4fa3-ab22-de3bc28b17a5
+    - f03a120f-0147-4d42-a34c-adb665b2cab8
+    validation_policies:
+    - 7fa94192-444d-4592-99b5-b4b337646bdd
+  id: null
+  identifiers:
+    name: default-source-enrollment-prompt
+    pk: 6a40c1c5-9bde-41d8-8fb2-301fb0180213
+  model: authentik_stages_prompt.promptstage
+- attrs:
+    session_duration: seconds=0
+  id: null
+  identifiers:
+    name: default-source-enrollment-login
+    pk: 6bc02ecc-d96d-4f63-868a-f5e38f0b9e50
+  model: authentik_stages_user_login.userloginstage
+- attrs:
+    create_users_group: 45abd3d7-9ce4-4964-9888-0cedb02a2353
+  id: null
+  identifiers:
+    name: enrollment-invitation-write
+    pk: 8f614c5f-7f3f-4ee6-8f97-029ef902c7b1
+  model: authentik_stages_user_write.userwritestage
+- attrs: {}
+  id: null
+  identifiers:
+    name: enrollment-invitation
+    pk: c2d91454-04e8-49b3-97f8-ee76262f7373
+  model: authentik_stages_invitation.invitationstage
+- attrs:
+    evaluate_on_plan: true
+    invalid_response_action: retry
+    policy_engine_mode: any
+  id: null
+  identifiers:
+    order: 10
+    pk: 4b4914d6-f44f-45c9-b0b8-5e77d77fb50d
+    stage: c2d91454-04e8-49b3-97f8-ee76262f7373
+    target: 80c5d412-ce6e-4f89-a667-418e4476ba50
+  model: authentik_flows.flowstagebinding
+- attrs:
+    evaluate_on_plan: true
+    invalid_response_action: retry
+    policy_engine_mode: any
+  id: null
+  identifiers:
+    order: 20
+    pk: b9dc4510-bd67-4cd7-8039-a6fde32af76d
+    stage: 6a40c1c5-9bde-41d8-8fb2-301fb0180213
+    target: 80c5d412-ce6e-4f89-a667-418e4476ba50
+  model: authentik_flows.flowstagebinding
+- attrs:
+    evaluate_on_plan: true
+    invalid_response_action: retry
+    policy_engine_mode: any
+  id: null
+  identifiers:
+    order: 30
+    pk: dbb3aa00-75dd-467c-856a-2e2c3f4b46e3
+    stage: 8f614c5f-7f3f-4ee6-8f97-029ef902c7b1
+    target: 80c5d412-ce6e-4f89-a667-418e4476ba50
+  model: authentik_flows.flowstagebinding
+- attrs:
+    evaluate_on_plan: true
+    invalid_response_action: retry
+    policy_engine_mode: any
+  id: null
+  identifiers:
+    order: 40
+    pk: 741d00ad-821e-4ab7-ab84-99e5d676ebdd
+    stage: 6bc02ecc-d96d-4f63-868a-f5e38f0b9e50
+    target: 80c5d412-ce6e-4f89-a667-418e4476ba50
+  model: authentik_flows.flowstagebinding
+metadata:
+  labels:
+    blueprints.goauthentik.io/generated: 'true'
+  name: authentik Export - 2022-09-04 15:48:38.742091+00:00
+version: 1
